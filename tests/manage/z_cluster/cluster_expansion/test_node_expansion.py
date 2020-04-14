@@ -57,16 +57,20 @@ class TestAddNode(ManageTest):
                 status=constants.NODE_READY
             )
         else:
-            logger.info(f'The worker nodes number before {len(helpers.get_worker_nodes())}')
-        #    before_exp = len(helpers.get_worker_nodes())
+            new_nodes = 3
+            before_exp = len(helpers.get_worker_nodes())
+            logger.info(f'The worker nodes number before {before_exp}')
             plt = PlatformNodesFactory()
             node_util = plt.get_nodes_platform()
-            node_util.create_and_attach_nodes_to_cluster({}, 'RHEL', 3)
-            # for sample in TimeoutSampler(
-            #     timeout=600, sleep=6, func=helpers.get_worker_nodes
-            # ):
-            #     if len(sample) == before_exp + 3:
-            #         break
-            # 
-            # logger.info(f'The worker nodes number after {len(helpers.get_worker_nodes())}')
-        # ToDo run IOs
+            node_util.create_and_attach_nodes_to_cluster({}, 'RHEL', new_nodes)
+            for sample in TimeoutSampler(
+                timeout=600, sleep=6, func=helpers.get_worker_nodes
+            ):
+                if len(sample) == before_exp + new_nodes:
+                    break
+
+            logger.info(f'The worker nodes number after {len(helpers.get_worker_nodes())}')
+            wait_for_nodes_status(
+                node_names=helpers.get_worker_nodes(),
+                status=constants.NODE_READY
+            )
