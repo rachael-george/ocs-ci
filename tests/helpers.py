@@ -784,6 +784,10 @@ def get_cephfs_name():
     Returns:
         str: Name of CFS
     """
+
+    if config.DEPLOYMENT.get('independent_mode'):
+        return 'cephfs'
+
     cfs_obj = ocp.OCP(
         kind=constants.CEPHFILESYSTEM,
         namespace=defaults.ROOK_CLUSTER_NAMESPACE

@@ -154,10 +154,10 @@ CODESPEED_URL = 'http://10.0.78.167:8000/'
 
 UPI_INSTALL_SCRIPT = "upi_on_aws-install.sh"
 
-DEFAULT_CLUSTERNAME = 'ocs-storagecluster'
-DEFAULT_BLOCKPOOL = f'{DEFAULT_CLUSTERNAME}-cephblockpool'
-METADATA_POOL = f'{DEFAULT_CLUSTERNAME}-cephfilesystem-metadata'
-DATA_POOL = f'{DEFAULT_CLUSTERNAME}-cephfilesystem-data0'
+DEFAULT_CLUSTERNAME = 'ocs-external-storagecluster'
+DEFAULT_BLOCKPOOL = f'ocs-cbp-rg'
+METADATA_POOL = f'cephfs_metadata'
+DATA_POOL = f'cephfs_data'
 DEFAULT_ROUTE_CRT = "router-certs-default"
 DEFAULT_NAMESPACE = "default"
 IMAGE_REGISTRY_RESOURCE_NAME = "cluster"

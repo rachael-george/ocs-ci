@@ -48,6 +48,7 @@ DEPLOYMENT:
   force_download_installer: True
   force_download_client: True
   default_latest_tag: 'latest-4.5'
+  independent_mode: True
   # You can overwrite csv channel version by following parameter
   ocs_csv_channel: "stable-4.5"
   # you can overwrite the image for ocs operator catalog source by following parameter:
@@ -95,7 +96,7 @@ REPORTING:
 # This is the default information about environment.
 ENV_DATA:
   cluster_name: null  # will be changed in ocscilib plugin
-  storage_cluster_name: 'ocs-storagecluster'
+  storage_cluster_name: 'ocs-external-storagecluster'
   storage_device_sets_name: "storageDeviceSets"
   cluster_namespace: 'openshift-storage'
   monitoring_enabled: true
