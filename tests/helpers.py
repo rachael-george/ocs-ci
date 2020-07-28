@@ -2400,3 +2400,15 @@ def get_cluster_proxies():
     logger.info("Using http_proxy: '%s'", http_proxy)
     logger.info("Using https_proxy: '%s'", https_proxy)
     return http_proxy, https_proxy
+
+def storagecluster_independent_check():
+    """
+    Check whether the storagecluster is running in independent mode
+    by checking the value of spec.externalStorage.enable
+    """
+    return OCP(
+        kind='StorageCluster',
+        namespace=config.ENV_DATA['cluster_namespace']
+    ).get().get('items')[0].get('spec').get(
+        'externalStorage'
+    ).get('enable')
